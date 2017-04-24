@@ -1,0 +1,41 @@
+<div class="slider">
+    <div *ngFor="let image of slides">
+        <img src="{{image.url}}" *ngIf="image.prev" class="slide animated" [ngClass]="{ 'slideOutLeft' : !image.active && forward, 'slideOutRight' : !image.active && !forward}">
+        <img src="{{image.url}}" *ngIf="image.active" class="slide animated" [ngClass]="{ 'slideInRight' : image.active && forward, 'slideInLeft' : image.active && !forward}">
+        <span *ngIf="image.active" class="banner animated" [ngClass]="{ 'bounceInRight' : image.active && forward, 'bounceInLeft' : image.active && !forward}">{{image.title}}</span>
+        <span *ngIf="image.active" class="message animated" [ngClass]="{ 'bounceInRight' : image.active && forward, 'bounceInLeft' : image.active && !forward}">{{image.message}}</span>
+    </div>
+    <div class="driver">
+        <div class="bullets" *ngFor="let image of slides">
+            <input type="radio" name="selector" [value]="image.index" [(ngModel)]="item" (ngModelChange)="update(item)" [checked]="image.active"
+            />
+        </div>
+    </div>
+    <div (click)="scrollToBottom()">
+        <i class="down-up"></i>
+        <i class="down"></i>
+    </div>
+</div>
+<div class="row home-page">
+    <div class="col-sm-4 development">
+        <img src="../../assets/images/UI.jpeg" class="areas" />
+        <p>
+            We provide best tutorials for learning latest UI development technologies, Including simple examples
+        </p>
+    </div>
+    <div class="col-sm-4 development">
+        <img src="../../assets/images/Services.png" class="areas" />
+        <p>
+            Be an ace backend developer in any technology you want to learn, and practise online
+        </p>
+    </div>
+    <div class="col-sm-4 development">
+        <img src="../../assets/images/mobile.png" class="areas" />
+        <p>
+            Learn mobile application development and get opportunity to be a part of huge mobile market
+        </p>
+    </div>
+    <div class="row footer">
+        <h3>NgLearn</h3>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+{
+    "technologies": [
+        {
+            "domain": "C#.NET",
+            "sub": [
+                {
+                    "id": 1,
+                    "name": "Winforms"
+                },
+                {
+                    "id": 2,
+                    "name": "ASP.NET"
+                },
+                {
+                    "id": 3,
+                    "name": "MVC"
+                },
+                {
+                    "id": 4,
+                    "name": "WCF"
+                },
+                {
+                    "id": 5,
+                    "name": "WPF"
+                },
+                {
+                    "id": 6,
+                    "name": "Web API"
+                },
+                {
+                    "id": 7,
+                    "name": "SQL Server"
+                },
+                {
+                    "id": 8,
+                    "name": "ADO.NET"
+                },
+                {
+                    "id": 9,
+                    "name": "Entity Framework"
+                }
+            ]
+        },
+        {
+            "domain": "JAVA",
+            "sub": [
+                {
+                    "id": 1,
+                    "name": "Core JAVA"
+                },
+                {
+                    "id": 2,
+                    "name": "J2EE"
+                },
+                {
+                    "id": 3,
+                    "name": "J2ME"
+                },
+                {
+                    "id": 4,
+                    "name": "Spring"
+                },
+                {
+                    "id": 5,
+                    "name": "Hibernate"
+                },
+                {
+                    "id": 6,
+                    "name": "JDBC"
+                },
+                {
+                    "id": 7,
+                    "name": "Spring MVC"
+                },
+                {
+                    "id": 8,
+                    "name": "Hadoop"
+                },
+                {
+                    "id": 9,
+                    "name": "Selenium"
+                }
+            ]
+        },
+        {
+            "domain": "JavaScript",
+            "sub": [
+                {
+                    "id": 1,
+                    "name": "AngularJS"
+                },
+                {
+                    "id": 2,
+                    "name": "NodeJS"
+                },
+                {
+                    "id": 3,
+                    "name": "Gulp"
+                },
+                {
+                    "id": 4,
+                    "name": "Bower"
+                },
+                {
+                    "id": 5,
+                    "name": "Express"
+                },
+                {
+                    "id": 6,
+                    "name": "Mongoose"
+                },
+                {
+                    "id": 7,
+                    "name": "MongoDB"
+                },
+                {
+                    "id": 8,
+                    "name": "AJAX"
+                },
+                {
+                    "id": 9,
+                    "name": "RadisJS"
+                }
+            ]
+        }
+    ]
+}
