@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 import { Routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { UserComponent } from './Components/user.component';
+import { ClassComponent } from './Components/class.component';
+import { SafePipe } from './Components/safe.pipe';
 import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent, UserComponent, FilterPipe
+    AppComponent, UserComponent,ClassComponent, FilterPipe, SafePipe
   ],
   imports: [
     BrowserModule,

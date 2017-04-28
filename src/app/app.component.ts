@@ -39,12 +39,11 @@ export class AppComponent {
   FormatSearchData(data)
   {
       for (var i=0;i<data.length;i++) {
-        for(var j=0;j<data[i].Subjects.$values.length;j++)
+        for(var j=0;j<data[i].subjects.$values.length;j++)
         {
-          this.SearchData.push({ domain : data[i].domain, child : data[i].Subjects.$values[j]});
+          this.SearchData.push({ domain : data[i].domain, child : data[i].subjects.$values[j]});
         }
       }
-      console.log(this.SearchData);
   }
   ViewResults(term)
   {

@@ -1,8 +1,8 @@
-import { Component,ElementRef, ViewChild, } from '@angular/core';
+import { Component,ElementRef } from '@angular/core';
 import { Observable } from 'rxjs/Rx'
 
 @Component({
-  selector: 'app-child',
+  selector: 'app-home',
   templateUrl: './user.component.html',
   styleUrls : ['./user.component.css','../../bootstrap/css/bootstrap.min.css','../Stylesheets/animate.css']
 })
@@ -11,22 +11,25 @@ export class UserComponent {
   slides : SliderData[];
   current : number;
   forward : boolean;
+  item : number;
   constructor(private scrollContainer : ElementRef) {
     this.slides = [];
     this.current = 0;
     this.forward = true;
-    this.slides.push({ index : 0,url : '../../assets/images/slide1.jpg',active : false, prev : false, title: "Forget the Complexity now", message: "Helps you to make learning about any technology easier and effective" });
+    this.item = 0;
+    this.slides.push({ index : 0,url : '../../assets/images/slide1.jpg',active : true, prev : false, title: "Forget the Complexity now", message: "Helps you to make learning about any technology easier and effective" });
     this.slides.push({ index : 1,url : '../../assets/images/slide2.jpg',active : false, prev : false, title: "Always be with us", message: "Stay connected with us to get the information of the new technologies"  });
     this.slides.push({ index : 2,url : '../../assets/images/slide3.jpg',active : false, prev : false, title: "Time is money", message: "Save your time, we are the one stop for all technical learnings"  });
     this.slides.push({ index : 3,url : '../../assets/images/slide4.jpg',active : false, prev : false, title: "Be from Good to Great", message: "Give yourself the chance to be versatile and highly valuable"  });
     this.slides.push({ index : 4,url : '../../assets/images/slide5.jpg',active : false, prev : false, title: "Play, stop, practise & repeat", message: "Start whenever and wherever you want, learn offline by download & play"  });
-    this.slides.push({ index : 5,url : '../../assets/images/slide6.jpg',active : false, prev : false, title: "Take the challange and beat it", message: "Join the quiz and test yourself, we will help you to get the desired mark"  });
+    this.slides.push({ index : 5,url : '../../assets/images/slide6.jpg',active : false, prev : true, title: "Take the challange and beat it", message: "Join the quiz and test yourself, we will help you to get the desired mark"  });
+    this.update(this.current);
     Observable.interval(5000).subscribe(()=> this.update(null));
   }
 
       scrollToBottom(): void {
         try {
-            this.scrollContainer.nativeElement.querySelector('.footer').scrollIntoView({ behaviour : 'smooth' });
+            this.scrollContainer.nativeElement.querySelector('.home-page').scrollIntoView();
         } catch(err) { }                 
     }
 
@@ -34,7 +37,6 @@ export class UserComponent {
     if(param != null && param != undefined){ 
       if(param - this.current >= 0){ this.forward = true; }
       else{ this.forward = false; }
-      console.log(this.forward);
       this.current = param; 
     }
     else{
@@ -56,6 +58,24 @@ export class UserComponent {
         }
     }   
     this.current++;
+  }
+
+  SetStyle(param:number)
+  {
+    if(param == 1)
+    {
+      return '#32ec18';
+    }
+    else if(param == 2)
+    {
+      return '#f43636';
+    }
+    else if(param == 3){
+      return '#55f';
+    }
+    else{
+      return '#fff';
+    }
   }
 
 

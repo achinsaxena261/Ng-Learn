@@ -1,0 +1,109 @@
+.bg{
+    z-index: 1;
+    position: absolute;
+    min-width: 80%;
+    min-height: 101%;
+    margin-left: -10px;
+    background-color:#805900;
+    box-shadow: -1px 5px 5px 1px;
+}
+
+.board{
+   box-shadow: 3px 3px 5px; 
+   margin-top: -3%;
+   padding-top: 5%;
+   height: 105%;
+}
+
+iframe{
+    margin-top: 10%;
+    height: 400px;
+    width: 650px;
+}
+
+
+h3{
+    color: #fff !important;
+    font-family: cursive !important;
+    /*transform: rotate(-10deg);*/
+    text-align: left;
+}
+
+.player{
+    margin-left: 2%;
+    margin-top: 2%;
+    text-align: center;
+    position: absolute;
+    background-color: green;
+    height: 94%;
+    width: 96%;
+    padding-top: 4%;
+    box-shadow: -3px -3px 5px;
+}
+
+.script{
+    float: right;
+}
+
+.sidemenu{
+    min-width: 21%;
+    right: 0;
+    position: absolute;
+    min-height: 101%;
+    background-color: #825108;
+    box-shadow: -1px 5px 5px 1px;
+    padding-left: 3%;
+    padding-right: 2%;
+    overflow: auto;
+}
+
+  .sidemenu::-webkit-scrollbar {
+    width: 0.5em;
+  }
+  
+  .sidemenu::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .sidemenu::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    outline: 1px solid slategrey;
+  }
+select{
+    border-radius: 3px;
+    padding: 3px 3px 4px;
+    font-family: cursive !important;
+    font-size: small !important;
+    box-shadow: 2px 2px 2px 0px;
+    border: none;
+}
+
+.shelf{
+    padding-top: 10%;
+    font-family: cursive;
+    margin-bottom: 10%;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;
+}
+
+label{
+    color: #fff;
+}
+
+.book{
+    background-color: #ff0;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    border-radius: 1px;
+    font-weight: 400;
+    font-family: fantasy;
+    color: #000;
+    text-align: center;
+    box-shadow: 2px -2px 0px 3px;
+    cursor: pointer;
+}
+.now-playing{
+    background-color: #fff;
+}

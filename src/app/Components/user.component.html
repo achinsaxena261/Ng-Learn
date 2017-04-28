@@ -5,35 +5,64 @@
         <span *ngIf="image.active" class="banner animated" [ngClass]="{ 'bounceInRight' : image.active && forward, 'bounceInLeft' : image.active && !forward}">{{image.title}}</span>
         <span *ngIf="image.active" class="message animated" [ngClass]="{ 'bounceInRight' : image.active && forward, 'bounceInLeft' : image.active && !forward}">{{image.message}}</span>
     </div>
-    <div class="driver">
-        <div class="bullets" *ngFor="let image of slides">
-            <input type="radio" name="selector" [value]="image.index" [(ngModel)]="item" (ngModelChange)="update(item)" [checked]="image.active"
-            />
+    <div class="row">
+        <div class="driver">
+            <div class="bullets" *ngFor="let image of slides">
+                <input type="radio" name="selector" [value]="image.index" [(ngModel)]="item" (ngModelChange)="update(item)" [checked]="image.active"
+                />
+            </div>
+        </div>
+        <div (click)="scrollToBottom()">
+            <i class="down"></i>
         </div>
     </div>
-    <div (click)="scrollToBottom()">
-        <i class="down-up"></i>
-        <i class="down"></i>
-    </div>
 </div>
-<div class="row home-page">
-    <div class="col-sm-4 development">
-        <img src="../../assets/images/UI.jpeg" class="areas" />
-        <p>
-            We provide best tutorials for learning latest UI development technologies, Including simple examples
-        </p>
+<div class="home-page">
+    <div class="key-areas">
+        Get proficiency in any of them
     </div>
-    <div class="col-sm-4 development">
-        <img src="../../assets/images/Services.png" class="areas" />
-        <p>
-            Be an ace backend developer in any technology you want to learn, and practise online
-        </p>
+    <div class="row">
+        <div class="col-sm-4 development" (mouseover)="showme1 = 1" (mouseleave)="showme1 = 0" [ngStyle]="{'background-color' : SetStyle(showme1)}">
+            <img src="../../assets/images/UI.jpeg" class="areas" [ngClass]="{'animated swing' : showme1 == 1}" />
+            <p>
+                We provide best tutorials for learning latest UI development technologies, Including simple examples
+            </p>
+        </div>
+        <div class="col-sm-4 development" (mouseover)="showme2 = 2" (mouseleave)="showme2 = 0" [ngStyle]="{'background-color' : SetStyle(showme2)}">
+            <img src="../../assets/images/Services.png" class="areas" [ngClass]="{'animated tada' : showme2 == 2}" />
+            <p>
+                Be an ace backend developer in any technology you want to learn, and practise online
+            </p>
+        </div>
+        <div class="col-sm-4 development" (mouseover)="showme3 = 3" (mouseleave)="showme3 = 0" [ngStyle]="{'background-color' : SetStyle(showme3)}">
+            <img src="../../assets/images/mobile.png" class="areas" [ngClass]="{'animated shake' : showme3 == 3}" />
+            <p>
+                Learn mobile application development and get opportunity to be a part of huge mobile market
+            </p>
+        </div>
     </div>
-    <div class="col-sm-4 development">
-        <img src="../../assets/images/mobile.png" class="areas" />
-        <p>
-            Learn mobile application development and get opportunity to be a part of huge mobile market
-        </p>
+    <div class="key-areas">
+        Learn more, be an expert and grow
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="../../assets/images/java.png" class="snaps" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../../assets/images/dotnet.jpg" class="snaps" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../../assets/images/html.png" class="snaps" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../../assets/images/node.png" class="snaps" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../../assets/images/angular.png" class="snaps" />
+        </div>
+        <div class="col-sm-1">
+            <img src="../../assets/images/hadoop.png" class="snaps" />
+        </div>
     </div>
     <div class="row footer">
         <h3>NgLearn</h3>

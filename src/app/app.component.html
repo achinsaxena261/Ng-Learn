@@ -3,7 +3,7 @@
     <div class="technologies">
         <div class="col-lg-4" *ngFor="let domain of HeaderData"><h3>{{domain.domain}}</h3>
             <ul>
-              <li class="btn btn-link blue" *ngFor="let subject of domain.Subjects.$values">{{subject.subject1}}</li>
+              <li class="btn btn-link blue" [routerLink]="['/classroom',subject]" *ngFor="let subject of domain.subjects.$values">{{subject.subject}}</li>
             </ul>
         </div>
     </div>
@@ -11,23 +11,25 @@
   <div class="row header">
     <div class="col-sm-3"><span class="title" [routerLink]="['/']">NgLearn</span></div>
     <div class="col-sm-1 links" [routerLink]="['/']">Home</div>
-    <div class="col-sm-1 links">Classroom</div>
+    <div class="col-sm-1 links" [routerLink]="['/classroom']">Classroom</div>
     <div class="col-sm-1 links">Connect</div>
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
     <div class="col-sm-1 links" (click)="ExpandBar()">{{expand ? 'Less' : 'More'}}</div>
   </div>
   <div class="search-bar animated" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }">
   <div class="col-sm-10">
-    <input type="text" placeholder="Search the technology by name e.g. Java" class="form-control" [(ngModel)]="term" (ngModelChange)="ViewResults(term);" />
+    <form #myform="ngForm">
+    <input type="text" name="find" placeholder="Search the technology by name e.g. Java" class="form-control" [(ngModel)]="term" (ngModelChange)="ViewResults(term);"  required/>
+    </form>
     <div class="result-box" *ngIf="ShowResults">
       <div class="no-results" *ngIf="(SearchData | filter:term).length === 0">No Matches found</div>
-      <div class="results" (click)="term = subject.child.subject1; ShowResults = false" *ngFor="let subject of SearchData | filter:term">{{subject.child.subject1}}
+      <div class="results" (click)="term = subject.child.subject;obj=subject.child;ShowResults = false" *ngFor="let subject of SearchData | filter:term">{{subject.child.subject}}
       <small class="sub-result">{{subject.domain}}</small>
       </div>
     </div>
   </div>
     <div class="col-sm-2">
-        <button class="btn btn-primary">Search</button>
+        <button class="btn btn-primary" [routerLink]="['/classroom',obj]" [disabled]="!myform.form.valid || ShowResults == true">Search</button>
     </div>    
   </div>
 </div>
