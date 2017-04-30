@@ -47,7 +47,7 @@
     background-color: rgba(255, 255, 255, 0.6);
     margin-top: -1%;
     padding: 1.5% 2% 1%;
-    box-shadow:  -1px 3px 1px 0px;
+    box-shadow:  0px 3px 3px 0px;
 }
 .header-expanded{
     width: 102%;

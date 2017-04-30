@@ -1,14 +1,14 @@
 <div class="sidemenu">
     <div class="shelf">Library</div>
-    <img src="../../assets/images/book.png" style="margin-left:22%;" />
+    <img src="../../assets/images/book.png" style="margin-left:24%;" />
     <br><br>
-    <label>Subjects</label>
+    <label>Subject</label>
     <select [(ngModel)]="topic" (ngModelChange)="CreatePlaylist(topic)">
             <option value="0">--Select--</option>
             <option *ngFor="let subject of ddlData" value="{{subject.child.id}}">{{subject.child.subject}}</option>
         </select>
      <br><br>
-        <label *ngIf="topic != 0">Select your video book</label>
+        <label *ngIf="topic != 0">Your Playlist</label>
      <br><br>  
      <div *ngFor="let video of playlist;let i = index"> 
         <div class="animated flipInX book" [ngClass]="{'now-playing' : Playing === video.id}" (click)="PlayVideo(video.id,video.url)">Chapter {{i + 1}}</div><br>

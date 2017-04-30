@@ -1,5 +1,5 @@
 <div [ngClass]="{'bar-collapsed' : !expand,'bar-expanded' : expand}">
-  <div class="row header-expanded">
+  <div class="row header-expanded" (mouseleave)="ExpandBar()">
     <div class="technologies">
         <div class="col-lg-4" *ngFor="let domain of HeaderData"><h3>{{domain.domain}}</h3>
             <ul>
@@ -12,9 +12,9 @@
     <div class="col-sm-3"><span class="title" [routerLink]="['/']">NgLearn</span></div>
     <div class="col-sm-1 links" [routerLink]="['/']">Home</div>
     <div class="col-sm-1 links" [routerLink]="['/classroom']">Classroom</div>
-    <div class="col-sm-1 links">Connect</div>
+    <div class="col-sm-1 links" [routerLink]="['/connect']">Connect</div>
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
-    <div class="col-sm-1 links" (click)="ExpandBar()">{{expand ? 'Less' : 'More'}}</div>
+    <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
   </div>
   <div class="search-bar animated" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }">
   <div class="col-sm-10">

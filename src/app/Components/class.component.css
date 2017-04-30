@@ -4,15 +4,16 @@
     min-width: 80%;
     min-height: 101%;
     margin-left: -10px;
-    background-color:#805900;
-    box-shadow: -1px 5px 5px 1px;
+    /*background-color:#803b00;*/
+    background-image: url('../../assets/images/wooden.jpg');
+    box-shadow: 1px 7px 8px 0px;
 }
 
 .board{
    box-shadow: 3px 3px 5px; 
    margin-top: -3%;
    padding-top: 5%;
-   height: 105%;
+   height: 105.5%;
 }
 
 iframe{
@@ -31,11 +32,11 @@ h3{
 
 .player{
     margin-left: 2%;
-    margin-top: 2%;
+    margin-top: 3%;
     text-align: center;
     position: absolute;
-    background-color: green;
-    height: 94%;
+    background-image: url('../../assets/images/green.jpg');
+    height: 92%;
     width: 96%;
     padding-top: 4%;
     box-shadow: -3px -3px 5px;
@@ -50,11 +51,11 @@ h3{
     right: 0;
     position: absolute;
     min-height: 101%;
-    background-color: #825108;
     box-shadow: -1px 5px 5px 1px;
     padding-left: 3%;
     padding-right: 2%;
     overflow: auto;
+    background-image: url('../../assets/images/bg.jpg');
 }
 
   .sidemenu::-webkit-scrollbar {
@@ -75,25 +76,24 @@ select{
     font-family: cursive !important;
     font-size: small !important;
     box-shadow: 2px 2px 2px 0px;
-    border: none;
 }
 
 .shelf{
     padding-top: 10%;
     font-family: cursive;
     margin-bottom: 10%;
-    color: white;
+    color: #000;
     font-weight: bold;
     text-align: center;
     font-size: x-large;
 }
 
 label{
-    color: #fff;
+    color: #000;
 }
 
 .book{
-    background-color: #ff0;
+    background-color: #f90;
     width: 100%;
     padding: 10px 10px 10px 10px;
     border-radius: 1px;
@@ -101,9 +101,9 @@ label{
     font-family: fantasy;
     color: #000;
     text-align: center;
-    box-shadow: 2px -2px 0px 3px;
+    box-shadow:3px 3px 4px 0px;
     cursor: pointer;
 }
 .now-playing{
-    background-color: #fff;
+    background-color: #ff0;
 }

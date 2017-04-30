@@ -63,17 +63,10 @@ export class ClassComponent {
 
     CreatePlaylist(param:number)
     {
-        if(param != 0)
-        {
-            this.Playing = 0;
-            this.getVideos.getTutorials(param).subscribe((data)=>{
-                this.playlist = data.$values;
-            });
-        }
-        else{
-            this.playlist = [];
-        }
-        this.PlayVideo(this.Playing,"");
+        this.Playing = 0;
+        this.getVideos.getTutorials(param).subscribe((data) => {
+            this.playlist = data.$values;
+        });
     }
 
     PlayVideo(id:number,url: string)
