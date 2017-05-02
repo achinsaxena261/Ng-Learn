@@ -1,0 +1,9 @@
+.thread{
+
+    background-color: #999;
+    margin-left: -8px;
+    min-height: 102%;
+    min-width: 102%;
+    padding-top: 10%;
+    position: absolute;
+}

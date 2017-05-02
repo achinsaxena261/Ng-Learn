@@ -9,6 +9,7 @@ import { ClassComponent } from './Components/class.component';
 import { forumComponent } from './Components/forum.component';
 import { SafePipe } from './Components/safe.pipe';
 import { FilterPipe } from './filter.pipe';
+import { NavService } from './Services/share.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FilterPipe } from './filter.pipe';
     HttpModule,
     Routing
   ],
-  providers: [],
+  providers: [NavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

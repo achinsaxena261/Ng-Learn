@@ -1,18 +1,20 @@
-import { Component,ElementRef } from '@angular/core';
-import { Observable } from 'rxjs/Rx'
+import { Component,ElementRef, OnDestroy} from '@angular/core';
+import { NavService } from '../Services/share.service';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-home',
   templateUrl: './user.component.html',
   styleUrls : ['./user.component.css','../../bootstrap/css/bootstrap.min.css','../Stylesheets/animate.css']
 })
-export class UserComponent {
+export class UserComponent implements OnDestroy {
 
   slides : SliderData[];
   current : number;
   forward : boolean;
   item : number;
-  constructor(private scrollContainer : ElementRef) {
+  public subscriber : any = {};
+  constructor(private scrollContainer : ElementRef,private NavService : NavService) {
     this.slides = [];
     this.current = 0;
     this.forward = true;
@@ -24,8 +26,14 @@ export class UserComponent {
     this.slides.push({ index : 4,url : '../../assets/images/slide5.jpg',active : false, prev : false, title: "Play, stop, practise & repeat", message: "Start whenever and wherever you want, learn offline by download & play"  });
     this.slides.push({ index : 5,url : '../../assets/images/slide6.jpg',active : false, prev : true, title: "Take the challange and beat it", message: "Join the quiz and test yourself, we will help you to get the desired mark"  });
     this.update(this.current);
-    Observable.interval(5000).subscribe(()=> this.update(null));
+    this.subscriber = Observable.interval(5000).subscribe(()=>  this.update(null));
   }
+
+    ngOnDestroy()
+    {
+      this.update(0);
+      this.subscriber.unsubscribe();
+    }
 
       scrollToBottom(): void {
         try {
@@ -42,8 +50,8 @@ export class UserComponent {
     else{
       this.forward = true;
     }
-    
     if(this.current > this.slides.length -1){ this.current = 0; }
+    this.NavService.SetValue(this.current);
     for(let x of this.slides){
         if(x.index == this.current)
         {
