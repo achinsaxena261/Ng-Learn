@@ -1,6 +1,6 @@
 @keyframes collapsed{
     0% { margin-top: 0px; }
-    99% { margin-top: -245px; }
+    100% { margin-top: -245px; }
 }
 
 @-webkit-keyframes collapsed{
@@ -16,6 +16,18 @@
 @-webkit-keyframes expand{
     0% { margin-top: -245px; }
     100% { margin-top: 0px; }
+}
+
+@keyframes disappear{
+    0% { visibility: visible }
+    99% { visibility: visible }
+    100% { visibility: hidden }
+}
+
+@-webkit-keyframes disappear{
+    0% { visibility: visible }
+    99% { visibility: visible }
+    100% { visibility: hidden }
 }
 
 .bar-collapsed{
@@ -57,6 +69,15 @@
     margin-bottom: 1%; 
     height: 250px;
 }
+
+.bar-collapsed .header-expanded{
+    animation-name: disappear;
+    -webkit-animation-name: disappear;
+    animation-duration: 0.6s;
+    -webkit-animation-duration: 0.6s;
+    visibility: hidden;
+}
+
 .title{
     color: #000;
     font-weight: bold;

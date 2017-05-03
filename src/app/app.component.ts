@@ -55,7 +55,6 @@ export class AppComponent {
 
   ChangeColor(index:number)
   {
-    console.log(index);
       if(index == 2 && !this.IsScroll && this.router.url == "/")
       {
         this.barColor = 'rgba(5, 5, 5, 0.3)';
@@ -75,7 +74,7 @@ export class AppComponent {
       else if(index == 5 && !this.IsScroll && this.router.url == "/")
       {
         this.barColor = 'rgba(10, 99, 119, 0.35)';
-      }            
+      }      
       else{
         this.barColor = 'rgba(255, 255, 255, 0.4)';
       }

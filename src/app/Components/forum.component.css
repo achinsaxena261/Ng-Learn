@@ -1,9 +1,28 @@
 .thread{
-
-    background-color: #999;
     margin-left: -8px;
     min-height: 102%;
     min-width: 102%;
     padding-top: 10%;
     position: absolute;
+}
+.model-background{
+    margin-left: -8px;
+    min-height: 102%;
+    min-width: 102%;
+    z-index: 5;
+    position: absolute;    
+    background-color: rgba(5, 5, 5, 0.8);
+}
+
+.model{
+    min-height: 62%;
+    min-width: 52%;  
+    z-index: 6;
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 20%;
+    background-color: #fff;
+    box-shadow: 3px 1px 9px;  
+    cursor : move;
+    color: #000;
 }
