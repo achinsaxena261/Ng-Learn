@@ -7,9 +7,9 @@ import { Component, ElementRef } from '@angular/core';
 })
 
 export class forumComponent {
-
+    active:number;
     constructor(private elementRef : ElementRef) {
-
+        this.active = 1;
     }
 
 }

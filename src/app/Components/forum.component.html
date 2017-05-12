@@ -1,8 +1,53 @@
 <div class="model-background">
     <div class="model" draggable="false">
-
+        <div class="tabs">
+            <div class="col-lg-6 tab">
+                <div class="btn btn-lg" [ngClass]="{ 'btn-select' : active==0 }" (click)="active = 0">LogIn</div>
+            </div>
+            <div class="col-lg-6 tab">
+                <div class="btn btn-lg" [ngClass]="{ 'btn-select' : active==1 }" (click)="active = 1">SignUp</div>
+            </div>
+        </div>
+        <div class="tab-page" *ngIf="active==1">
+            <label>First name
+            <input type="text" class="form-control" placeholder="Firstname"/>
+            </label>
+            <label>Last name
+            <input type="text" class="form-control" placeholder="Lastname"/>
+            </label>            
+            <br><br>
+            <label>ChoosePassword
+            <input type="password" class="form-control" placeholder="eg. #abc14D"/>
+            </label> 
+            <label>Confirm Password
+            <input type="password" class="form-control" placeholder="confirm password"/>
+            </label>                 
+            <br><br>
+            <label>Email
+            <input type="password" class="form-control" placeholder="john@mail.com"/>
+            </label> 
+            <label>Gender
+            <select class="form-control">
+                <option value="">--select--</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+            </label>    
+            <br>
+            <button class="btn btn-primary">Sign Up</button>                              
+        </div>
+        <div class="tab-page" *ngIf="active==0">
+            <label>Username
+            <input type="text" class="form-control" placeholder="Firstname"/>
+            </label>           
+            <br><br>
+            <label>Password
+            <input type="password" class="form-control" placeholder="eg. #abc14D"/>
+            </label>    
+            <br>
+            <button class="btn btn-primary">Log In</button>                              
+        </div>        
     </div>
 </div>
 <div class="thread">
-
 </div>
