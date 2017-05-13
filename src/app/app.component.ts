@@ -39,7 +39,6 @@ export class AppComponent {
   }
 
   updateHeader(evt) {
-
     if (window.pageYOffset > this.elementRef.nativeElement.querySelector('.slide').height) {
       if (!this.IsScroll) {
         this.IsScroll = true;

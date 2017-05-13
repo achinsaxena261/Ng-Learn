@@ -16,7 +16,7 @@
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
     <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
   </div>
-  <div class="search-bar animated" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }" [ngStyle]="{ 'background-color' : barColor }">
+  <div class="search-bar animated" *ngIf="ShowSearch" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }" [ngStyle]="{ 'background-color' : barColor }">
   <div class="col-sm-10">
     <form #myform="ngForm">
     <input type="text" name="find" placeholder="Search the technology by name e.g. Java" class="form-control" [(ngModel)]="term" (ngModelChange)="ViewResults(term);"  required/>

@@ -1,5 +1,6 @@
-<div class="model-background">
-    <div class="model" draggable="false">
+<div class="model-background" *ngIf="visible" (drop)="UpdatePosition($event)" (dragover)="SetPosition($event)">
+    <div class="model" draggable="true" (dragstart)="GetPosition($event)" [ngStyle]="{ 'margin-left' : shiftX, 'margin-top' : shiftY }">
+        <div class="row"></div>
         <div class="tabs">
             <div class="col-lg-6 tab">
                 <div class="btn btn-lg" [ngClass]="{ 'btn-select' : active==0 }" (click)="active = 0">LogIn</div>
@@ -17,14 +18,14 @@
             </label>            
             <br><br>
             <label>ChoosePassword
-            <input type="password" class="form-control" placeholder="eg. #abc14D"/>
+            <input type="password" class="form-control" placeholder="ex. #abc14D"/>
             </label> 
             <label>Confirm Password
             <input type="password" class="form-control" placeholder="confirm password"/>
             </label>                 
             <br><br>
             <label>Email
-            <input type="password" class="form-control" placeholder="john@mail.com"/>
+            <input type="password" class="form-control" placeholder="ex. john@mail.com"/>
             </label> 
             <label>Gender
             <select class="form-control">
@@ -38,11 +39,10 @@
         </div>
         <div class="tab-page" *ngIf="active==0">
             <label>Username
-            <input type="text" class="form-control" placeholder="Firstname"/>
+            <input type="text" class="form-control" placeholder="Use email as username"/>
             </label>           
-            <br><br>
             <label>Password
-            <input type="password" class="form-control" placeholder="eg. #abc14D"/>
+            <input type="password" class="form-control" placeholder="Enter password"/>
             </label>    
             <br>
             <button class="btn btn-primary">Log In</button>                              
