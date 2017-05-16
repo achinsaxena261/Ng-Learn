@@ -15,6 +15,10 @@
     <div class="col-sm-1 links" [routerLink]="['/connect']">Connect</div>
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
     <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
+    <div class="col-sm-4 profile">
+      <span class="links" (click)="ShowMenu()">Achin Saxena</span>      
+      <img src="../assets/images/profile.png" class="side-menu-btn" (click)="ShowMenu()">
+    </div>
   </div>
   <div class="search-bar animated" *ngIf="ShowSearch" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }" [ngStyle]="{ 'background-color' : barColor }">
   <div class="col-sm-10">
@@ -32,6 +36,7 @@
         <button class="btn btn-primary" [routerLink]="['/classroom',obj]" [disabled]="!myform.form.valid || ShowResults == true">Search</button>
     </div>    
   </div>
+  <div class="sidemenu" [ngStyle]="{ 'background-color' : barColor }"  *ngIf="IsMenu"></div>
 </div>
 <div>
   <router-outlet></router-outlet>

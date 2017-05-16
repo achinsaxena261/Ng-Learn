@@ -54,6 +54,7 @@ h3{
     box-shadow: -1px 5px 5px 1px;
     padding-left: 3%;
     padding-right: 2%;
+    padding-top: 5%;
     overflow: auto;
     background-image: url('../../assets/images/bg.jpg');
 }
@@ -79,9 +80,9 @@ select{
 }
 
 .shelf{
-    padding-top: 10%;
+    padding-top: 2%;
     font-family: cursive;
-    margin-bottom: 10%;
+    margin-bottom: 2%;
     color: #000;
     font-weight: bold;
     text-align: center;

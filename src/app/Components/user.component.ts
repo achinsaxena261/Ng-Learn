@@ -23,7 +23,7 @@ export class UserComponent implements OnDestroy {
     this.slides.push({ index: 1, url: '../../assets/images/slide2.jpg', active: false, prev: false, title: "Always be with us", message: "Stay connected with us to get the information of the new technologies" });
     this.slides.push({ index: 2, url: '../../assets/images/slide3.jpg', active: false, prev: false, title: "Time is money", message: "Save your time, we are the one stop for all technical learnings" });
     this.slides.push({ index: 3, url: '../../assets/images/slide4.jpg', active: false, prev: false, title: "Be from Good to Great", message: "Give yourself the chance to be versatile and highly valuable" });
-    this.slides.push({ index: 4, url: '../../assets/images/slide5.jpg', active: false, prev: false, title: "Play, stop, practise & repeat", message: "Start whenever and wherever you want, learn offline by download & play" });
+    this.slides.push({ index: 4, url: '../../assets/images/slide5.jpg', active: false, prev: false, title: "Play, stop, practice & repeat", message: "Start whenever and wherever you want, learn offline by download & play" });
     this.slides.push({ index: 5, url: '../../assets/images/slide6.jpg', active: false, prev: true, title: "Take the challange & beat it", message: "Join the quiz and test yourself, we will help you to get the desired mark" });
     this.update(this.current);
     this.subscriber = Observable.interval(5000).subscribe(() => this.update(null));

@@ -7,17 +7,19 @@ import { Component, ElementRef } from '@angular/core';
 })
 
 export class forumComponent {
+    gender : string;
     active:number;
     visible : boolean;
     X : number;
     Y : number;
     shiftX : string;
-    shiftY : string;    
+    shiftY : string; 
     constructor(private elementRef : ElementRef) {
         this.active = 0;
         this.visible = true;
         this.shiftX = "305px";
         this.shiftY = "139px";
+        this.gender = "";
     }
 
     GetPosition(event) {     
@@ -34,6 +36,6 @@ export class forumComponent {
         this.X = event.clientX;
         this.Y = event.clientY;
         this.shiftX = this.elementRef.nativeElement.querySelector('.model').offsetLeft + x + "px";
-        this.shiftY = this.elementRef.nativeElement.querySelector('.model').offsetTop + y + "px";        
+        this.shiftY = this.elementRef.nativeElement.querySelector('.model').offsetTop + y + "px";  
     }
 }

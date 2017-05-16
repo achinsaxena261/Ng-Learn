@@ -22,6 +22,7 @@ export class AppComponent {
   ShowResults : boolean;  
   barColor : string;
   IsScroll : boolean;
+  IsMenu : boolean;
   constructor(private GetService : GetService, private router : Router ,private NavService : NavService,private elementRef : ElementRef)
   {
     this.expand = false;
@@ -30,6 +31,7 @@ export class AppComponent {
     this.barColor = 'rgba(255, 255, 255, 0.5)';
     this.SearchData = [];
     this.IsScroll = false;
+    this.IsMenu = false;
     GetService.getTechnologies().subscribe(data => { 
       this.HeaderData = data.$values;
       this.FormatSearchData(this.HeaderData);
@@ -87,6 +89,16 @@ export class AppComponent {
     }
     else{
       this.ShowSearch = true;
+    }    
+  }
+
+  ShowMenu()
+  {
+    if(this.IsMenu == true){
+      this.IsMenu = false;
+    }
+    else{
+      this.IsMenu = true;
     }    
   }
 

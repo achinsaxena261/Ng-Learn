@@ -60,7 +60,7 @@
     margin-top: -1%;
     padding-top: 1%;
     padding-left: 1%;
-    padding-bottom: 1%;
+    padding-bottom: 0.8%;
     box-shadow:  0px 3px 3px 0px;
 }
 .header-expanded{
@@ -79,48 +79,52 @@
 }
 
 .title{
-    color: #000;
+    color: #f50;
     font-weight: bold;
     font-size: 25px;
     cursor: pointer;
     font-family: cursive;
+    text-shadow: 2px 2px 3px #000;
 }
 
 .title:hover{
-    color: #005;
+    color: #fff;
 }
 
 .links{
-    color: #000;
+    color: #fff;
     font-weight: 400;
     font-size: 20px; 
-    margin-top: 0.5%; 
+    margin-top: 0.3%; 
     cursor: pointer;
     font-family: cursive;
+    text-shadow: 2px 2px 3px #000;
 }
 
 .links:hover{
     color: #fff;
-    text-shadow: -3px 2px 13px
+    text-shadow: -3px 2px 13px;
 }
 
 .technologies{
-    color: #000;
+    color: #f50;
     padding-top: 2%;
     text-align: center;
     margin-right: 5%;
-    font-family: cursive;
+    font-size: 30px;
+    text-shadow: 2px 2px 3px #000;
+    font-family: cursive;       
 }
 
 .blue{
-    color: #005 !important;
+    color: #fff !important;
     font-size: 17px !important;
     font-weight: 400 !important;
     font-family: cursive !important;
 }
 
 .blue:hover {
-    color: #77f !important;
+    color: #fff !important;
     text-shadow: -3px 2px 13px !important;
 }
 
@@ -171,3 +175,30 @@ input[type="text"]{
     background-color: #227 !important;
 }
 
+.profile{
+    text-align: right;
+    margin-top: 0.3%;     
+}
+
+.side-menu-btn{
+    height: 7%;
+    width: 7%;
+    margin-right: 10%;
+    cursor: pointer;
+    border-radius: 75px;
+    border: medium black;
+    box-shadow: 0px 1px 3px;
+}
+
+.sidemenu{
+    min-width: 21%;
+    right: 0;
+    z-index: 8;
+    position: absolute;
+    min-height: 101%;
+    box-shadow: -1px 2px 2px 1px;
+    padding-left: 3%;
+    padding-right: 2%;
+    padding-top: 5%;
+    overflow: auto;
+}

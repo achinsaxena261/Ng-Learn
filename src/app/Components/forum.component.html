@@ -1,6 +1,8 @@
 <div class="model-background" *ngIf="visible" (drop)="UpdatePosition($event)" (dragover)="SetPosition($event)">
-    <div class="model" draggable="true" (dragstart)="GetPosition($event)" [ngStyle]="{ 'margin-left' : shiftX, 'margin-top' : shiftY }">
-        <div class="row"></div>
+    <div class="model animated fadeIn" draggable="true" (dragstart)="GetPosition($event)" [ngStyle]="{ 'margin-left' : shiftX, 'margin-top' : shiftY }">
+        <div class="row" style="margin-right: -30px !important;">
+            <img src="../../assets/images/close.png" class="close" (click)="visible = false">
+        </div>
         <div class="tabs">
             <div class="col-lg-6 tab">
                 <div class="btn btn-lg" [ngClass]="{ 'btn-select' : active==0 }" (click)="active = 0">LogIn</div>
@@ -10,43 +12,49 @@
             </div>
         </div>
         <div class="tab-page" *ngIf="active==1">
-            <label>First name
-            <input type="text" class="form-control" placeholder="Firstname"/>
-            </label>
-            <label>Last name
-            <input type="text" class="form-control" placeholder="Lastname"/>
-            </label>            
-            <br><br>
-            <label>ChoosePassword
-            <input type="password" class="form-control" placeholder="ex. #abc14D"/>
-            </label> 
-            <label>Confirm Password
-            <input type="password" class="form-control" placeholder="confirm password"/>
-            </label>                 
-            <br><br>
-            <label>Email
-            <input type="password" class="form-control" placeholder="ex. john@mail.com"/>
-            </label> 
-            <label>Gender
-            <select class="form-control">
-                <option value="">--select--</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-            </select>
-            </label>    
-            <br>
-            <button class="btn btn-primary">Sign Up</button>                              
+            <div class="animated fadeIn">
+                <form #myform="ngForm">
+                <label>First name
+                <input type="text" name="fname" class="form-control" placeholder="Firstname" [(ngModel)]="fname" required/>
+                </label>
+                <label>Last name
+                <input type="text" name="lname" class="form-control" placeholder="Lastname" [(ngModel)]="lname" required/>
+                </label>
+                <br><br>
+                <label>ChoosePassword
+                <input type="password" name="pwd1" class="form-control" placeholder="ex. #abc14D" [(ngModel)]="pwd1" required/>
+                </label>
+                <label>Confirm Password
+                <input type="password" name="pwd2" class="form-control" placeholder="confirm password" [(ngModel)]="pwd2" required/>
+                </label>
+                <br><br>
+                <label>Email
+                <input type="email" name="email" class="form-control" placeholder="ex. john@mail.com" [(ngModel)]="email" required/>
+                </label>
+                <label>Gender
+                <select class="form-control" name="gender" [(ngModel)]="gender" required>
+                    <option value="">--select--</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+                </label>
+                </form>
+                <br>
+                <button class="btn btn-primary" [disabled]="!myform.form.valid">Sign Up</button>
+            </div>
         </div>
         <div class="tab-page" *ngIf="active==0">
-            <label>Username
-            <input type="text" class="form-control" placeholder="Use email as username"/>
-            </label>           
-            <label>Password
-            <input type="password" class="form-control" placeholder="Enter password"/>
-            </label>    
-            <br>
-            <button class="btn btn-primary">Log In</button>                              
-        </div>        
+            <div class="animated fadeIn">
+                <label>Username
+                <input type="email" class="form-control" placeholder="Use email as username"/>
+                </label>
+                <label>Password
+                <input type="password" class="form-control" placeholder="Enter password"/>
+                </label>
+                <br>
+                <button class="btn btn-primary">Log In</button>
+            </div>
+        </div>
     </div>
 </div>
 <div class="thread">
