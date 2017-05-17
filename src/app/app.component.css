@@ -79,7 +79,7 @@
 }
 
 .title{
-    color: #f50;
+    color: #f80;
     font-weight: bold;
     font-size: 25px;
     cursor: pointer;
@@ -107,7 +107,7 @@
 }
 
 .technologies{
-    color: #f50;
+    color: #f80;
     padding-top: 2%;
     text-align: center;
     margin-right: 5%;

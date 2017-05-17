@@ -19,14 +19,14 @@
 .btn.btn-lg{
     width: 100%;
     border-radius: 0;
-    background-color: #f90;
+    background-color: #fff;
     font-family: cursive;
     color: #000;
     font-weight: bold;
 }
 
 .btn.btn-lg.btn-select{
-    background-color: #fff;
+    background-color: #f60;
 }
 
 button.btn.btn-primary{

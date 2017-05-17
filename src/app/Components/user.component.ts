@@ -13,12 +13,14 @@ export class UserComponent implements OnDestroy {
   current: number;
   forward: boolean;
   item: number;
+  scrollPos : number;
   public subscriber: any = {};
   constructor(private scrollContainer: ElementRef, private NavService: NavService) {
     this.slides = [];
     this.current = 0;
     this.forward = true;
     this.item = 0;
+    this.scrollPos = 1;
     this.slides.push({ index: 0, url: '../../assets/images/slide1.jpg', active: true, prev: false, title: "Forget the Complexity now", message: "Helps you to make learning about any technology easier and effective" });
     this.slides.push({ index: 1, url: '../../assets/images/slide2.jpg', active: false, prev: false, title: "Always be with us", message: "Stay connected with us to get the information of the new technologies" });
     this.slides.push({ index: 2, url: '../../assets/images/slide3.jpg', active: false, prev: false, title: "Time is money", message: "Save your time, we are the one stop for all technical learnings" });
@@ -36,7 +38,15 @@ export class UserComponent implements OnDestroy {
 
   scrollToBottom(): void {
     try {
-      this.scrollContainer.nativeElement.querySelector('.home-page').scrollIntoView();
+      window.scrollBy(0, this.scrollPos);
+      if(this.scrollPos<38)
+      {
+        setTimeout(() => { this.scrollToBottom() }, 10);
+      }
+      else{
+        this.scrollPos = 1;
+      }
+      this.scrollPos = this.scrollPos + 1;
     } catch (err) { }
   }
 
