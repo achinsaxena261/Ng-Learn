@@ -1,8 +1,5 @@
 <div class="model-background" *ngIf="visible" (drop)="UpdatePosition($event)" (dragover)="SetPosition($event)">
     <div class="model animated fadeIn" draggable="true" (dragstart)="GetPosition($event)" [ngStyle]="{ 'margin-left' : shiftX, 'margin-top' : shiftY }">
-        <div class="row" style="margin-right: -30px !important;">
-            <img src="../../assets/images/close.png" class="close" (click)="visible = false">
-        </div>
         <div class="tabs">
             <div class="col-lg-6 tab">
                 <div class="btn btn-lg" [ngClass]="{ 'btn-select' : active==0 }" (click)="active = 0">LogIn</div>
@@ -53,6 +50,10 @@
                 </label>
                 <br>
                 <button class="btn btn-primary">Log In</button>
+                <div class="row oauth">
+                    <b>Or Login with</b>
+                </div>
+                <img class="login-item" src="../../assets/images/gplus.png" (click)="login()">                    
             </div>
         </div>
     </div>

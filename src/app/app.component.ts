@@ -3,7 +3,7 @@ import { GetService } from './Services/app.service';
 import { Router } from '@angular/router';
 import { NavService } from './Services/share.service';
 import { Observable } from 'rxjs/Rx';
-
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent {
   barColor : string;
   IsScroll : boolean;
   IsMenu : boolean;
-  constructor(private GetService : GetService, private router : Router ,private NavService : NavService,private elementRef : ElementRef)
+  constructor(private GetService : GetService, private oauthService: OAuthService, private router : Router ,private NavService : NavService,private elementRef : ElementRef)
   {
     this.expand = false;
     this.ShowSearch = false;
@@ -32,12 +32,42 @@ export class AppComponent {
     this.SearchData = [];
     this.IsScroll = false;
     this.IsMenu = false;
-    GetService.getTechnologies().subscribe(data => { 
+    GetService.getTechnologies().subscribe(data => {
       this.HeaderData = data.$values;
       this.FormatSearchData(this.HeaderData);
     });
+    // URL of the SPA to redirect the user to after login
+    this.oauthService.redirectUri = window.location.origin + "/connect";
+
+    // The SPA's id. The SPA is registerd with this id at the auth-server
+    this.oauthService.clientId = "223902805055-bpb9t244brstijq7vg6n276l9gscosqt.apps.googleusercontent.com";
+
+    // set the scope for the permissions the client should request
+    // The first three are defined by OIDC. The 4th is a usecase-specific one
+    this.oauthService.scope = "https://www.googleapis.com/auth/drive.metadata.readonly";
+
+    // set to true, to receive also an id_token via OpenId Connect (OIDC) in addition to the
+    // OAuth2-based access_token
+    this.oauthService.oidc = true;
+
+    // Use setStorage to use sessionStorage or another implementation of the TS-type Storage
+    // instead of localStorage
+    this.oauthService.setStorage(sessionStorage);
+
+    // The name of the auth-server that has to be mentioned within the token
+    this.oauthService.issuer = "https://accounts.google.com";
+
+    // Load Discovery Document and then try to login the user
+    this.oauthService.loadDiscoveryDocument().then(() => {
+      // This method just tries to parse the token(s) within the url when
+      // the auth-server redirects the user back to the web-app
+      // It dosn't send the user the the login page
+      this.oauthService.tryLogin({});
+
+    });
+
     this.ChangeColor(NavService.GetValue());
-    NavService.navUpdated.subscribe((value)=> this.ChangeColor(NavService.GetValue())); 
+    NavService.navUpdated.subscribe((value) => this.ChangeColor(NavService.GetValue())); 
   }
 
   updateHeader(evt) {

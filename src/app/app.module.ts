@@ -10,6 +10,7 @@ import { forumComponent } from './Components/forum.component';
 import { SafePipe } from './Components/safe.pipe';
 import { FilterPipe } from './filter.pipe';
 import { NavService } from './Services/share.service';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NavService } from './Services/share.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    OAuthModule.forRoot(),
     Routing
   ],
   providers: [NavService],
