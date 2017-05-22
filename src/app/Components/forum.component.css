@@ -117,3 +117,9 @@ select{
     font-family: cursive;
     font-size: large;
 }
+
+.error
+{
+    padding-left: 18%;
+    color: red;
+}

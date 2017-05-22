@@ -1,5 +1,10 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { ActivatedRoute } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthService } from '../Services/forum.service';
+import { NavService } from '../Services/share.service';
+import 'rxjs/add/operator/map';
 
 @Component({
     selector: 'app-forum',
@@ -7,58 +12,61 @@ import { OAuthService } from 'angular-oauth2-oidc';
     styleUrls: ['./forum.component.css', '../../bootstrap/css/bootstrap.min.css', '../Stylesheets/animate.css']
 })
 
-export class forumComponent {
+export class forumComponent implements OnInit {
     gender: string;
     active: number;
     visible: boolean;
+    isError : boolean;
     X: number;
     Y: number;
     shiftX: string;
     shiftY: string;
-    constructor(private elementRef: ElementRef,private oAuthService: OAuthService) {
+    constructor(private route : ActivatedRoute,private elementRef: ElementRef,private navService:NavService, private oAuthService: OAuthService,private http : Http,private authService : AuthService) {
+        this.oAuthService.tryLogin({
+            onTokenReceived: context => {
+                authService.SetToken(context.accessToken);
+                authService.GetUserInfo(context.accessToken).subscribe(data => {
+                   this.authenticateUser({ name:data.name, email:data.email,gender:data.gender,img:data.picture });
+                } );
+                this.visible = false;
+            },
+            validationHandler: context => {
+                return http.get("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token="+context.accessToken).toPromise();
+            }
+        });                    
+    }
+
+    ngOnInit()
+    {
         this.active = 0;
-        this.visible = true;
         this.shiftX = "305px";
         this.shiftY = "139px";
         this.gender = ""; 
-        this.oAuthService.tryLogin({
-            onTokenReceived: context => {
-                //
-                // Output just for purpose of demonstration
-                // Don't try this at home ... ;-)
-                // 
-                console.log("logged in");
-                console.log(context.idToken);
-                this.visible = false;
-            },
-            //validationHandler: context => {
-                // var search = new URLSearchParams();
-                // search.set('token', context.idToken); 
-                // search.set('client_id', oauthService.clientId);
-                // return http.get(validationUrl, { search}).toPromise();
-            //}
-        });               
+        this.isError = false;
+        if (this.navService.GetSession().name != '') {
+            this.visible = false;
+        }
+        else {
+            this.visible = true;
+        }          
+    }
+
+    loginUser(email : string,pwd : string)
+    {
+        this.authService.ValidateUser(email,pwd).subscribe(data=> { this.authenticateUser(data) },
+        error => { this.isError = true; });
+    }
+
+    private authenticateUser(user : any)
+    {        
+        this.authService.setCookie('ngLearn',user,1);
+        this.navService.SetSession(this.authService.getCookie());
+        this.isError = false;
+        this.visible = false;
     }
 
     public login() {
         this.oAuthService.initImplicitFlow();
-        this.oAuthService.tryLogin({
-            onTokenReceived: context => {
-                //
-                // Output just for purpose of demonstration
-                // Don't try this at home ... ;-)
-                // 
-                console.log("logged in");
-                console.log(context);
-            },
-            validationHandler: context => {
-                console.log(context.idToken);
-                // var search = new URLSearchParams();
-                // search.set('token', context.idToken); 
-                // search.set('client_id', oauthService.clientId);
-                // return http.get(validationUrl, { search}).toPromise();
-            }
-        });
     }
     
     public logoff() {

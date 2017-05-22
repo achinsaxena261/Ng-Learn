@@ -1,6 +1,6 @@
 <div [ngClass]="{'bar-collapsed' : !expand,'bar-expanded' : expand}">
   <div class="row header-expanded" (mouseleave)="ExpandBar()"  [ngStyle]="{ 'background-color' : barColor }">
-    <div class="technologies">
+    <div class="technologies" *ngIf="Init">
         <div class="col-lg-4" *ngFor="let domain of HeaderData"><h3>{{domain.domain}}</h3>
             <ul>
               <li class="btn btn-link blue" [routerLink]="['/classroom',subject]" *ngFor="let subject of domain.subjects.$values">{{subject.subject}}</li>
@@ -16,8 +16,8 @@
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
     <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
     <div class="col-sm-4 profile">
-      <span class="links" (click)="ShowMenu()">Achin Saxena</span>      
-      <img src="../assets/images/profile.png" class="side-menu-btn" (click)="ShowMenu()">
+      <span class="links" (click)="ShowMenu()">{{session.name}}</span>      
+      <img [src]="session.img == null || session.img == ''? '../assets/images/profile.png' : session.img" class="side-menu-btn">
     </div>
   </div>
   <div class="search-bar animated" *ngIf="ShowSearch" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }" [ngStyle]="{ 'background-color' : barColor }">
@@ -36,7 +36,9 @@
         <button class="btn btn-primary" [routerLink]="['/classroom',obj]" [disabled]="!myform.form.valid || ShowResults == true">Search</button>
     </div>    
   </div>
-  <div class="sidemenu" [ngStyle]="{ 'background-color' : barColor }"  *ngIf="IsMenu"></div>
+  <div class="sidemenu" [ngStyle]="{ 'background-color' : barColor }"  *ngIf="IsMenu">
+    <div class="links" (click)="Logout()">Logout</div>  
+  </div>
 </div>
 <div>
   <router-outlet></router-outlet>

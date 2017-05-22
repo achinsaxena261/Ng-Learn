@@ -43,13 +43,17 @@
         <div class="tab-page" *ngIf="active==0">
             <div class="animated fadeIn">
                 <label>Username
-                <input type="email" class="form-control" placeholder="Use email as username"/>
+                <input type="email" [(ngModel)]="email" class="form-control" placeholder="Use email as username"/>
                 </label>
                 <label>Password
-                <input type="password" class="form-control" placeholder="Enter password"/>
+                <input type="password" [(ngModel)]="pwd" class="form-control" placeholder="Enter password"/>
                 </label>
                 <br>
-                <button class="btn btn-primary">Log In</button>
+                <button class="btn btn-primary" (click)="loginUser(email,pwd)">Log In</button>
+                <br>
+                <div *ngIf="isError" class="error">
+                    <small>Invalid username or password!</small>
+                </div>
                 <div class="row oauth">
                     <b>Or Login with</b>
                 </div>

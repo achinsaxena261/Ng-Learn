@@ -10,6 +10,7 @@ import { forumComponent } from './Components/forum.component';
 import { SafePipe } from './Components/safe.pipe';
 import { FilterPipe } from './filter.pipe';
 import { NavService } from './Services/share.service';
+import { AuthService } from './Services/forum.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     OAuthModule.forRoot(),
     Routing
   ],
-  providers: [NavService],
+  providers: [NavService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

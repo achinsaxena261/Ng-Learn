@@ -34,7 +34,7 @@ export class ClassComponent {
                 this.topic = params.id;
                 this.CreatePlaylist(this.topic);
            }
-        })
+        });
         getList.getTechnologies().subscribe((data)=>{
             var arrList = data.$values;
             for (var i=0;i<arrList.length;i++) {
