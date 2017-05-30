@@ -16,6 +16,10 @@
     background-color: rgba(100, 100, 100, 0.5);
 }
 
+sup{
+    color: red;
+}
+
 label{
     font-family: cursive;
 }

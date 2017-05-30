@@ -11,45 +11,53 @@
         <div class="tab-page" *ngIf="active==1">
             <div class="animated fadeIn">
                 <form #myform="ngForm">
-                <label>First name
+                <label>First name<sup><small>*</small></sup>
                 <input type="text" name="fname" class="form-control" placeholder="Firstname" [(ngModel)]="fname" required/>
                 </label>
-                <label>Last name
+                <label>Last name<sup><small>*</small></sup>
                 <input type="text" name="lname" class="form-control" placeholder="Lastname" [(ngModel)]="lname" required/>
                 </label>
-                <br><br>
-                <label>ChoosePassword
+                <br>
+                <label>ChoosePassword<sup><small>*</small></sup>
                 <input type="password" name="pwd1" class="form-control" placeholder="ex. #abc14D" [(ngModel)]="pwd1" required/>
                 </label>
-                <label>Confirm Password
+                <label>Confirm Password<sup><small>*</small></sup>
                 <input type="password" name="pwd2" class="form-control" placeholder="confirm password" [(ngModel)]="pwd2" required/>
                 </label>
-                <br><br>
-                <label>Email
-                <input type="email" name="email" class="form-control" placeholder="ex. john@mail.com" [(ngModel)]="email" required/>
-                </label>
-                <label>Gender
+                <br>
+                <label>Gender<sup><small>*</small></sup>
                 <select class="form-control" name="gender" [(ngModel)]="gender" required>
                     <option value="">--select--</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                 </select>
+                </label> 
+                <label>Email<sup><small>*</small></sup>
+                <input type="email" name="email" class="form-control" placeholder="ex. john@mail.com" [(ngModel)]="email" required email/>
                 </label>
-                </form>
                 <br>
-                <button class="btn btn-primary" [disabled]="!myform.form.valid">Sign Up</button>
+                <label>Select a picture
+                    <input type="file" class="form-control" (change)="fileChange($event)" placeholder="Upload file" accept=".jpg,.png">
+                </label>                
+                </form>
+                <div *ngIf="isWrong" class="error">
+                    <small>{{ErrorMsg}}</small>
+                </div>
+                <br>
+                <button class="btn btn-primary" (click)="RegisterUser(fname,lname,pwd1,pwd2,email,gender)" [disabled]="!myform.form.valid">Sign Up</button>
+                
             </div>
         </div>
         <div class="tab-page" *ngIf="active==0">
             <div class="animated fadeIn">
                 <label>Username
-                <input type="email" [(ngModel)]="email" class="form-control" placeholder="Use email as username"/>
+                <input type="email" [(ngModel)]="uname" class="form-control" placeholder="Use email as username"/>
                 </label>
                 <label>Password
                 <input type="password" [(ngModel)]="pwd" class="form-control" placeholder="Enter password"/>
                 </label>
                 <br>
-                <button class="btn btn-primary" (click)="loginUser(email,pwd)">Log In</button>
+                <button class="btn btn-primary" (click)="loginUser(uname,pwd)">Log In</button>
                 <br>
                 <div *ngIf="isError" class="error">
                     <small>Invalid username or password!</small>

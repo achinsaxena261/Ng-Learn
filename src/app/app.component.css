@@ -198,4 +198,5 @@ input[type="text"]{
     overflow: auto;
     min-width: 200px;
     text-align: center;
+    padding-bottom: 5px;
 }

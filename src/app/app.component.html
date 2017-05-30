@@ -17,7 +17,7 @@
     <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
     <div class="col-sm-4 profile">
       <span class="links" (click)="ShowMenu()">{{session.name}}</span>      
-      <img [src]="session.img == null || session.img == ''? '../assets/images/profile.png' : session.img" class="side-menu-btn">
+      <img [src]="session.img == null || session.img == ''? '../assets/images/profile.png' : session.img | safe" class="side-menu-btn">
     </div>
   </div>
   <div class="search-bar animated" *ngIf="ShowSearch" [ngClass]="{ 'flipInX' : ShowSearch,'flipOutX' : !ShowSearch }" [ngStyle]="{ 'background-color' : barColor }">
