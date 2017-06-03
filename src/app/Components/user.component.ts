@@ -14,6 +14,9 @@ export class UserComponent implements OnDestroy {
   forward: boolean;
   item: number;
   scrollPos : number;
+  showme1 : number;
+  showme2 : number;
+  showme3 : number;
   public subscriber: any = {};
   constructor(private scrollContainer: ElementRef, private NavService: NavService) {
     this.slides = [];
