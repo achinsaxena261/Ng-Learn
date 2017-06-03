@@ -71,4 +71,23 @@
     </div>
 </div>
 <div class="thread">
+    <div class="ask" *ngIf="!visible">
+        <div class="ask-bar">
+            <img [src]="session.img == null || session.img == ''? '../assets/images/profile.png' : session.img | safe" class="side-menu-btn">
+            <span><b>Welcome {{ session.name }}, you may ask your question</b></span>
+        </div>
+            <input type="text" class="control" [(ngModel)]="title" placeholder="Give a brief title" />
+            <textarea placeholder="Write your query here" [(ngModel)]="body" rows="4" class="control">
+            </textarea>
+            <button class="btn btn-sm btn-success submit" (click)="postQuestion(title,body)">Post</button>            
+    </div>
+    <div *ngFor="let post of posts" class="cards">
+        <div class="ask-bar">
+            <b>{{post.title}}</b>
+        </div>
+        <div class="card-body">{{post.body}}</div>
+        <small class="asked-by">- {{post.userId}}</small>
+        <input type="text" class="control" placeholder="Reply to this post" />
+        <button class="btn btn-sm btn-info submit">Reply</button>
+    </div>               
 </div>

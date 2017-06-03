@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
     this.expand = false;
     this.ShowSearch = false;
     this.ShowResults = false;
-    this.barColor = 'rgba(255, 255, 255, 0.5)';
+    this.barColor = 'rgba(100, 100, 100, 0.5)';
     this.SearchData = [];
     this.IsScroll = false;
     this.IsMenu = false;
@@ -116,7 +116,7 @@ export class AppComponent implements OnInit {
       this.barColor = 'rgba(10, 99, 119, 0.35)';
     }
     else {
-      this.barColor = 'rgba(255, 255, 255, 0.4)';
+      this.barColor = 'rgba(100, 100, 100, 0.4)';
     }
   }
 

@@ -9,12 +9,13 @@
     </div>
   </div>
   <div class="row header" [ngStyle]="{ 'background-color' : barColor }">
-    <div class="col-sm-3"><span class="title" [routerLink]="['/']">NgLearn</span></div>
+    <div class="col-sm-2"><span class="title" [routerLink]="['/']">NgLearn</span></div>
     <div class="col-sm-1 links" [routerLink]="['/']">Home</div>
     <div class="col-sm-1 links" [routerLink]="['/classroom']">Classroom</div>
     <div class="col-sm-1 links" [routerLink]="['/connect']">Connect</div>
     <div class="col-sm-1 links" (click)="DisplaySearch()">Search</div>
     <div class="col-sm-1 links" (click)="ExpandBar()">Tutorials</div>
+    <div class="col-sm-1 links">Notifications</div>
     <div class="col-sm-4 profile">
       <span class="links" (click)="ShowMenu()">{{session.name}}</span>      
       <img [src]="session.img == null || session.img == ''? '../assets/images/profile.png' : session.img | safe" class="side-menu-btn">

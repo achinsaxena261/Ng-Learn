@@ -27,7 +27,13 @@ export class forumComponent implements OnInit {
     shiftY: string;
     apiEndPoint: string;
     imgPath: string;
+    session: any;
+    posts: any;
+    title : string;
+    body : string;
+    subscriber : any = {};
     constructor( @Inject(DOCUMENT) private document, private route: ActivatedRoute, private elementRef: ElementRef, private navService: NavService, private oAuthService: OAuthService, private http: Http, private authService: AuthService) {
+        this.session = this.authService.getCookie();
         this.oAuthService.tryLogin({
             onTokenReceived: context => {
                 authService.SetToken(context.accessToken);
@@ -40,6 +46,9 @@ export class forumComponent implements OnInit {
                 return http.get("https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=" + context.accessToken).toPromise();
             }
         });
+        if (this.navService.GetSession().name != '') {
+            this.subscriber = this.authService.getPosts().subscribe(data => this.posts = data);
+        }        
     }
 
     ngOnInit() {
@@ -51,7 +60,7 @@ export class forumComponent implements OnInit {
         this.isWrong = false;
         this.ErrorMsg = "";
         this.imgPath = "";
-        this.apiEndPoint = "http://"+ document.location.hostname +"/NgLearnService/api/UploadFileApi";
+        this.apiEndPoint = "http://" + document.location.hostname + "/NgLearnService/api/UploadFileApi";       
         if (this.navService.GetSession().name != '') {
             this.visible = false;
         }
@@ -70,6 +79,7 @@ export class forumComponent implements OnInit {
         this.navService.SetSession(this.authService.getCookie());
         this.isError = false;
         this.visible = false;
+        this.session = this.authService.getCookie();
     }
 
     public login() {
@@ -133,12 +143,18 @@ export class forumComponent implements OnInit {
         headers.append('Content-Type', 'json');
         headers.append('Accept', 'application/json');
         let options = new RequestOptions({ headers: headers });
-        this.http.post('http://' + document.location.hostname + '/NgLearnService/api/user?name=' + fname +'%20'+ lname + '&gender=' + this.gender + '&email=' + email + '&pwd=' + btoa(pwd1),'')
+        this.http.post('http://' + document.location.hostname + '/NgLearnService/api/user?name=' + fname + '%20' + lname + '&gender=' + this.gender + '&email=' + email + '&pwd=' + btoa(pwd1), '')
             .map(res => res.json())
             .catch(error => Observable.throw(error))
             .subscribe(
             data => alert(data),
             error => alert(error)
             )
+    }
+    postQuestion(title:string,body:string){
+        var post = { userId : this.session.name, id : this.session.email, title : title, body : body };
+        this.posts.unshift(post);
+        this.title = "";
+        this.body = "";
     }
 }
